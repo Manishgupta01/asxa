@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            padding: 170px;
+            gap: 20px;
+        }
+
+        table,
+        tr,
+        th {
+            border: 1px solid black;
+        }
+
+        th {
+            padding: 5px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="qqq">
+        <label for="Number">Enter Number.:</label>
+        <input type="text" id="Num" name="Number" required minlength="10" maxlength="10"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" placeholder="0-9"
+            value="" />
+        <button type="button" onclick="timeout()">Submit</button>
+    </div>
+    <div class="output">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        list
+                    </th>
+                    <th>
+                        remove
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="task">
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+    <script>
+        // tbl.style.display = "none";
+        let v = document.getElementsByClassName("output");
+        // v.style.display = "none";
+
+        function timeout() {
+            var milliseconds = +document.querySelector("#Num").value;
+            var seconds = milliseconds * 1000;
+            setTimeout(() => {
+
+
+                let Inputxt = document.createElement("input");
+                let save = document.createElement("button");
+                save.innerText = "save";
+                Inputxt.placeholder = "Enter text";
+                Inputxt.id = "intpvalue";
+                document.body.append(Inputxt);
+                document.body.append(save);
+                qqq.style.display = "none";
+
+
+
+                save.addEventListener("click", () => {
+                    // console.log(qqq);
+                    let v = document.getElementById('intpvalue').value;
+                    console.log(v)
+                    let table_1 = `<tr>
+                            <td>
+                                ${v}
+                             </td>
+                            <td>
+                                <button type="button" id="del "  onclick="delt()">delete</button>
+                            </td>
+                         </tr>`
+
+                    let ty = document.getElementById("task");
+                    ty.innerHTML += table_1;
+                    //store the value in v
+
+                    function delt() {
+                    //     for (var i = 0; i < size - 1; i++) {
+                    //         ty = pre[i] - pre[i + 1];
+                        
+                    // }
+
+                }
+
+                });
+        }, seconds);
+
+        }
+    </script>
+</body>
+
+</html>

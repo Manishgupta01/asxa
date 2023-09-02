@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+
+        table,
+        tr,
+        th {
+            border: 1px solid black;
+        }
+
+        th {
+            padding: 5px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <input type="number" id="input_time" placeholder="Enter Time in sec"
+        oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" /);">
+    <input type="submit" id="enter"><br><br><br>
+    <table>
+        <thead>
+            <tr>
+                <th>title</th>
+                <th>title</th>
+                <th>remove work</th>
+            </tr>
+        </thead>
+        <tbody id="tbl"></tbody>
+    </table>
+
+</body>
+<script>
+    let time = document.getElementById("input_time")
+    time.style.width = "115px"
+    time.style.height = "14px"
+    let sub = document.getElementById("enter")
+    sub.style.height = "20px"
+    sub.addEventListener(("click"), function () {
+        console.log(time.value)
+        const myTimeout = setTimeout(timing, time.value * Number(1000));
+        function timing() {
+            var name_input = document.createElement("input")
+            name_input.style.height = "14px"
+            name_input.placeholder = "enter your task"
+            name_input.id = "task"
+            var add = document.createElement("button")
+            add.style.height = "20px"
+            add.innerHTML = "add"
+            var body = document.querySelector("body");
+            body.append(name_input);
+            body.append(add);
+            var task1 = document.getElementById("task")
+
+            add.addEventListener(("click"), function () {
+
+                var x = document.getElementById("tbl")
+                var a = name_input.value
+                var table = `<tr>
+                        <td id ="s"></td>
+                        <td>${a}</td>
+                        <td><button id="delete_btn">delete</button></td>
+                        </tr>`
+                        x.innerHTML += table;
+                // var s_no = document.getElementById("s")
+                // s_no.innerHTML += 1;
+                // var d_btn = document.getElementById("delete_btn")
+
+
+            })
+
+        }
+    })
+
+</script>
+
+</html>
